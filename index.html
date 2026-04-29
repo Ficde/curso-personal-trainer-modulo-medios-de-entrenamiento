@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espacio de Repaso - FICDE</title>
+    <title>Espacio de Repaso - MOD medios de entrenamiento</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -100,6 +100,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
+            justify-content: center;
         }
 
         .block-card {
@@ -110,6 +111,8 @@
             transition: all 0.3s ease;
             position: relative;
             border: 2px solid transparent;
+            max-width: 400px;
+            margin: 0 auto;
         }
 
         .block-card:hover {
@@ -128,7 +131,14 @@
 
         .block-title { color: var(--ficde-azul-dark); font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; }
 
-        .block-desc { color: var(--texto-secundario); font-size: 0.9rem; line-height: 1.5; }
+        .block-desc { 
+            color: var(--texto-secundario); 
+            font-size: 0.9rem; 
+            line-height: 1.5; 
+            word-wrap: break-word;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
 
         .activity-screen {
             display: none;
@@ -158,6 +168,9 @@
             margin-top: 20px;
             position: relative;
             text-align: left;
+            word-wrap: break-word;
+            word-break: break-word;
+            overflow-wrap: break-word;
         }
 
         .tutor-bubble::after {
@@ -191,7 +204,14 @@
 
         .act-title { font-size: 1.8rem; color: var(--ficde-azul-dark); margin: 15px 0; font-weight: 800; }
 
-        .act-instruction { font-size: 1.1rem; color: var(--texto-secundario); margin-bottom: 30px; }
+        .act-instruction { 
+            font-size: 1.1rem; 
+            color: var(--texto-secundario); 
+            margin-bottom: 30px; 
+            word-wrap: break-word;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
 
         .student-input {
             width: 100%;
@@ -363,7 +383,7 @@
                 <img src="logo.png" alt="FICDE" class="logo-img" onerror="this.style.display='none'; document.getElementById('altLogo').style.display='block'">
                 <h2 id="altLogo" style="display:none; color:white; font-weight:800;">FICDE</h2>
             </div>
-            <div class="module-tag">Módulo Periodoncia y Cirugía</div>
+            <div class="module-tag">MOD medios de entrenamiento</div>
         </header>
 
         <div id="selectionScreen">
@@ -379,25 +399,25 @@
                 <div class="block-card" onclick="startModule('sintesis')">
                     <div class="block-icon">🧠</div>
                     <div class="block-title">Síntesis</div>
-                    <div class="block-desc">Este bloque resume conceptos básicos del periodonto, tejidos de soporte, enfermedad periodontal y principios de cirugía periodontal.</div>
+                    <div class="block-desc">Definir los medios de entrenamiento como ejercicios que estimulan capacidades motoras y describir los rasgos de integralidad y poliarticularidad del modelo funcional</div>
                 </div>
 
                 <div class="block-card" onclick="startModule('analisis')">
                     <div class="block-icon">🔍</div>
                     <div class="block-title">Análisis Crítico</div>
-                    <div class="block-desc">En este bloque se analizan situaciones clínicas relacionadas con periodoncia, enfermedad periodontal y cirugía.</div>
+                    <div class="block-desc">Examinar las contraindicaciones de la fuerza máxima, los mitos del fitness y las limitaciones que impone la tecnologización frente a la observación del sujeto</div>
                 </div>
 
                 <div class="block-card" onclick="startModule('escenarios')">
                     <div class="block-icon">🎬</div>
                     <div class="block-title">Escenarios</div>
-                    <div class="block-desc">En este bloque se analizan situaciones clínicas relacionadas con periodoncia y cirugía periodontal.</div>
+                    <div class="block-desc">Aborda la toma de decisiones y la aplicación del entrenamiento en diversas poblaciones evaluando al individuo, su movimiento y su contexto específico</div>
                 </div>
 
                 <div class="block-card" onclick="startModule('practica')">
                     <div class="block-icon">⚡</div>
                     <div class="block-title">Práctica</div>
-                    <div class="block-desc">Aplicación de conceptos de periodoncia, cirugía, tejidos y bioseguridad.</div>
+                    <div class="block-desc">Establecer los procedimientos técnicos para levantamientos olímpicos, el uso seguro de máquinas de cardio y la organización de sesiones mediante circuitos o superseries</div>
                 </div>
             </div>
         </div>
@@ -499,536 +519,548 @@
 
         // ===== ACTIVIDADES =====
         const modules = {
-            sintesis:[
+            sintesis: [
                 {
                     type: 'text',
-                    badge: 'Periodoncia',
-                    title: 'Definición',
-                    instruction: 'Explica qué estudia la periodoncia.',
+                    badge: 'Fundamentos del entrenamiento',
+                    title: 'Concepto de medios',
+                    instruction: 'Definir el término medios de entrenamiento',
+                    tutor: 'Piensa en las herramientas que estimulan el cuerpo.',
+                    explanation: 'Los medios son ejercicios físicos que estimulan el cuerpo de la persona y desarrollan sus capacidades.',
                     validation: (raw) => {
                         const v = normalizar(raw);
-                        const roots =['periodonci', 'estudi', 'tejid', 'sostien', 'rode', 'dient'];
+                        const roots = ['ejercicios', 'estimulan', 'capacidades'];
                         return roots.filter(r => v.includes(r)).length >= 2;
-                    },
-                    tutor: 'Piensa en tejidos que sostienen el diente.',
-                    explanation: 'La periodoncia estudia los tejidos que sostienen y rodean el diente.'
+                    }
                 },
                 {
                     type: 'text',
-                    badge: 'Periodonto',
-                    title: 'Componentes',
-                    instruction: 'Describe qué forma el periodonto.',
+                    badge: 'Modelos de entrenamiento',
+                    title: 'El enfoque funcional',
+                    instruction: 'Comparar el objetivo principal del método funcional frente al tradicional.',
+                    tutor: 'Enfócate en la preparación total del cuerpo para el desempeño.',
+                    explanation: 'El modelo funcional busca preparar el cuerpo de manera integral para mejorar su capacidad de reacción.',
                     validation: (raw) => {
                         const v = normalizar(raw);
-                        const roots =['periodont', 'formad', 'enci', 'hues', 'ligament'];
+                        const roots = ['integral', 'preparar', 'reaccion'];
                         return roots.filter(r => v.includes(r)).length >= 2;
-                    },
-                    tutor: 'Son tejidos de soporte.',
-                    explanation: 'El periodonto está formado por encía, hueso y ligamento periodontal.'
+                    }
                 },
                 {
                     type: 'checklist',
-                    badge: 'Tejidos periodontales',
-                    title: 'Identificación',
-                    instruction: 'Marca los tejidos del periodonto.',
-                    items:[
-                        { text: 'Encía', correct: true },
-                        { text: 'Ligamento', correct: true },
-                        { text: 'Hueso', correct: true },
-                        { text: 'Músculo', correct: false }
+                    badge: 'Evolución del fitness',
+                    title: 'Nuevas tendencias',
+                    instruction: 'Identificar los aparatos o acciones que promueven los gimnasios de la jungla.',
+                    items: [
+                        { text: 'Máquinas multifuerza', correct: false },
+                        { text: 'Treparse', correct: true },
+                        { text: 'Colgarse', correct: true },
+                        { text: 'Empujar', correct: true },
+                        { text: 'Pesos fijos', correct: false }
                     ].sort(() => Math.random() - 0.5),
-                    tutor: 'Son tejidos de soporte dental.',
-                    explanation: 'El periodonto incluye encía, hueso y ligamento periodontal.'
+                    tutor: 'Son movimientos que imitan al hombre natural o de las cavernas.',
+                    explanation: 'Las nuevas tendencias incluyen treparse, colgarse y empujar para lograr un entrenamiento integral.'
                 },
                 {
                     type: 'text',
-                    badge: 'Encía',
-                    title: 'Función',
-                    instruction: 'Explica la función de la encía.',
+                    badge: 'Desarrollo motor',
+                    title: 'Clasificación de capacidades',
+                    instruction: 'Categorizar los dos grandes grupos de capacidades motoras.',
+                    tutor: 'Una depende de procesos energéticos y la otra del sistema nervioso.',
+                    explanation: 'El rendimiento físico depende de la interacción entre las capacidades condicionales y las coordinativas.',
                     validation: (raw) => {
                         const v = normalizar(raw);
-                        const roots =['enci', 'proteg', 'sostien', 'dient'];
+                        const roots = ['interaccion', 'condicionales', 'coordinativas'];
                         return roots.filter(r => v.includes(r)).length >= 2;
-                    },
-                    tutor: 'Protege el diente.',
-                    explanation: 'La encía protege y sostiene el diente.'
+                    }
                 },
                 {
                     type: 'blanks',
-                    badge: 'Ligamento periodontal',
-                    title: 'Completar',
-                    instruction: 'El ligamento periodontal une el ______ con el ______. ',
-                    blanks: ['diente', 'hueso'],
-                    tutor: 'Une dos estructuras.',
-                    explanation: 'El ligamento une el diente con el hueso.'
+                    anyOrder: false,
+                    badge: 'Fisiología del ejercicio',
+                    title: 'Beneficios cardiovasculares',
+                    instruction: 'Completar la frase<br><br>El ejercicio disminuye la ___ en reposo y reduce la ___ arterial.',
+                    blanks: ['frecuencia cardiaca', 'presion'],
+                    tutor: 'Son indicadores vitales que mejoran con la oxigenación celular.',
+                    explanation: 'Entrenar reduce la frecuencia cardíaca y la presión arterial, mejorando la salud del sistema circulatorio.'
                 },
                 {
                     type: 'text',
-                    badge: 'Enfermedad periodontal',
-                    title: 'Concepto',
-                    instruction: 'Explica qué es la enfermedad periodontal.',
+                    badge: 'Variables de carga',
+                    title: 'Intensidad y 1RM',
+                    instruction: 'Puntualizar qué significa el término 1RM en el levantamiento de pesas.',
+                    tutor: 'Es el máximo esfuerzo posible en una sola ejecución.',
+                    explanation: 'El 1RM es la mayor cantidad de peso que se puede levantar con una técnica correcta una vez.',
                     validation: (raw) => {
                         const v = normalizar(raw);
-                        const roots =['enfermedad', 'periodontal', 'afect', 'enci', 'hues'];
+                        const roots = ['mayor', 'cantidad', 'peso', 'tecnica'];
                         return roots.filter(r => v.includes(r)).length >= 2;
-                    },
-                    tutor: 'Produce daño en soporte.',
-                    explanation: 'La enfermedad periodontal afecta encía y hueso.'
+                    }
                 },
                 {
                     type: 'checklist',
-                    badge: 'Signos periodontales',
-                    title: 'Identificación',
-                    instruction: 'Marca signos de enfermedad periodontal.',
-                    items:[
-                        { text: 'Sangrado', correct: true },
-                        { text: 'Inflamación', correct: true },
-                        { text: 'Movilidad', correct: true },
-                        { text: 'Color de ojos', correct: false }
+                    badge: 'Aplicaciones del método',
+                    title: 'Orientaciones funcionales',
+                    instruction: 'Seleccionar las poblaciones o áreas donde se aplica el entrenamiento funcional.',
+                    items: [
+                        { text: 'Adaptado', correct: true },
+                        { text: 'Máxima performance', correct: true },
+                        { text: 'Sedentarismo total', correct: false },
+                        { text: 'Tercera edad', correct: true },
+                        { text: 'Rehabilitación', correct: true }
                     ].sort(() => Math.random() - 0.5),
-                    tutor: 'Son signos en la boca.',
-                    explanation: 'La enfermedad periodontal produce sangrado e inflamación.'
+                    tutor: 'Este método es versátil y se ajusta a diversas necesidades particulares.',
+                    explanation: 'El método se aplica en rehabilitación, tercera edad y búsqueda de máxima performance según el caso.'
                 },
                 {
                     type: 'text',
-                    badge: 'Cirugía periodontal',
-                    title: 'Objetivo',
-                    instruction: 'Explica para qué se realiza cirugía periodontal.',
+                    badge: 'Rasgos distintivos',
+                    title: 'Poliarticularidad',
+                    instruction: 'Describir la característica principal del rasgo distintivo del entrenamiento funcional.',
+                    tutor: 'No se trata de aislar un músculo, sino de integrar varios.',
+                    explanation: 'La poliarticularidad se centra en el movimiento e involucra múltiples articulaciones de forma simultánea.',
                     validation: (raw) => {
                         const v = normalizar(raw);
-                        const roots =['cirugi', 'periodontal', 'trat', 'lesi', 'tejid', 'soport'];
+                        const roots = ['movimiento', 'articulaciones', 'simultanea'];
                         return roots.filter(r => v.includes(r)).length >= 2;
-                    },
-                    tutor: 'Se usa cuando hay daño.',
-                    explanation: 'La cirugía periodontal trata lesiones en tejidos de soporte.'
+                    }
                 },
                 {
                     type: 'traffic',
-                    badge: 'Conceptos correctos',
-                    title: 'Periodoncia',
-                    instruction: 'Marca correcto',
-                    items:[
-                        { text: 'La encía protege', color: 'green' },
-                        { text: 'El hueso no sostiene', color: 'red' },
-                        { text: 'El ligamento une', color: 'green' },
-                        { text: 'No existe periodonto', color: 'red' }
+                    badge: 'Objetivos de fuerza',
+                    title: 'Clasificación por intensidad',
+                    instruction: 'Marca afirmaciones correctas',
+                    items: [
+                        { text: 'La fuerza máxima utiliza cargas del 90% al 100% del 1RM.', color: 'green' },
+                        { text: 'La fuerza resistencia busca ganar masa muscular con 1 repetición.', color: 'red' },
+                        { text: 'La fuerza potencia estimula las fibras de contracción rápida.', color: 'green' },
+                        { text: 'La fuerza preventiva utiliza cargas superiores al 80% habitualmente.', color: 'red' }
                     ].sort(() => Math.random() - 0.5),
-                    tutor: 'Piensa en soporte dental.',
-                    explanation: 'El periodonto sostiene el diente.'
+                    tutor: 'Relaciona el porcentaje de carga con el objetivo metabólico.',
+                    explanation: 'La fuerza máxima requiere alta intensidad, mientras la potencia se enfoca en la velocidad explosiva.'
                 },
                 {
                     type: 'text',
-                    badge: 'Bioseguridad',
-                    title: 'Importancia',
-                    instruction: 'Explica por qué es importante la bioseguridad en cirugía.',
+                    badge: 'Salud mental',
+                    title: 'Endorfinas y humor',
+                    instruction: 'Enlistar el efecto de las endorfinas en el Sistema Nervioso Central durante el ejercicio.',
+                    tutor: 'Son las llamadas hormonas del placer segregadas por el cerebro.',
+                    explanation: 'Las endorfinas generan sensaciones de bienestar y felicidad que mejoran positivamente el humor.',
                     validation: (raw) => {
                         const v = normalizar(raw);
-                        const roots =['bioseguridad', 'proteg', 'pacient', 'profesional'];
+                        const roots = ['bienestar', 'felicidad'];
                         return roots.filter(r => v.includes(r)).length >= 2;
-                    },
-                    tutor: 'Evita contagios.',
-                    explanation: 'La bioseguridad protege al paciente y al profesional.'
+                    }
                 }
             ],
-            analisis:[
+            analisis: [
                 {
                     type: 'text',
-                    badge: 'Error conceptual',
-                    title: 'Periodoncia',
-                    instruction: 'Un alumno dice que la periodoncia estudia solo los dientes.<br><br>Explica el error.',
+                    badge: 'Riesgos del entrenamiento',
+                    title: 'Contraindicaciones de fuerza máxima',
+                    instruction: 'Analizar para qué perfiles no se recomienda el uso de intensidades del 90% al 100% de 1RM.,',
+                    tutor: 'El manual advierte sobre el nivel de exigencia y el estado de salud previo.',
+                    explanation: 'El trabajo de fuerza máxima se desaconseja en personas de edad avanzada o sujetos que presenten alguna lesión previa.',
                     validation: (raw) => {
                         const v = normalizar(raw);
-                        const roots =['periodonci', 'estudi', 'tejid', 'soport'];
+                        const roots = ['edad', 'avanzada', 'lesion'];
                         return roots.filter(r => v.includes(r)).length >= 2;
-                    },
-                    tutor: 'No solo el diente.',
-                    explanation: 'La periodoncia estudia tejidos de soporte.'
+                    }
                 },
                 {
                     type: 'text',
-                    badge: 'Periodonto',
-                    title: 'Confusión',
-                    instruction: 'Un estudiante dice que el músculo es parte del periodonto.<br><br>Explica por qué es incorrecto.',
+                    badge: 'Gestión del esfuerzo',
+                    title: 'Interpretación de la fatiga',
+                    instruction: 'Diferenciar cómo se interpreta el cansancio en el método tradicional frente al funcional.',
+                    tutor: 'Observa qué modelo prioriza la calidad de ejecución sobre el agotamiento.,',
+                    explanation: 'Mientras el modelo tradicional busca el cansancio, el funcional lo evita para asegurar un mayor rendimiento y calidad.,',
                     validation: (raw) => {
                         const v = normalizar(raw);
-                        const roots =['periodont', 'incluy', 'enci', 'hues', 'ligament'];
+                        const roots = ['rendimiento', 'evita'];
                         return roots.filter(r => v.includes(r)).length >= 2;
-                    },
-                    tutor: 'Son tejidos específicos.',
-                    explanation: 'El periodonto incluye encía, hueso y ligamento.'
+                    }
                 },
                 {
                     type: 'checklist',
-                    badge: 'Partes correctas',
-                    title: 'Periodonto',
-                    instruction: 'Marca partes reales.',
-                    items:[
-                        { text: 'Encía', correct: true },
-                        { text: 'Ligamento', correct: true },
-                        { text: 'Hueso', correct: true },
-                        { text: 'Piel', correct: false }
+                    badge: 'Mitos del fitness',
+                    title: 'Lo que NO es funcional',
+                    instruction: 'Marcar los conceptos que, según el autor, suelen confundirse erróneamente con el entrenamiento funcional.',
+                    items: [
+                        { text: 'CORE', correct: true },
+                        { text: 'Entrenamiento inestable', correct: true },
+                        { text: 'Poliarticularidad', correct: false },
+                        { text: 'Entrenamiento mental', correct: true },
+                        { text: 'Preparación integral', correct: false }
                     ].sort(() => Math.random() - 0.5),
-                    tutor: 'Solo tejidos dentales.',
-                    explanation: 'El periodonto sostiene el diente.'
+                    tutor: 'Revisa la lista de exclusión en la página 14 del manual del alumno.',
+                    explanation: 'Conceptos como el CORE, el entrenamiento inestable o el mental no definen por sí mismos al método funcional.'
                 },
                 {
                     type: 'text',
-                    badge: 'Enfermedad periodontal',
-                    title: 'Error frecuente',
-                    instruction: 'Un paciente cree que el sangrado es normal.<br><br>Explica por qué es incorrecto.',
+                    badge: 'Crítica a la tecnología',
+                    title: 'Limitaciones de las máquinas',
+                    instruction: 'Explicar por qué el uso exclusivo de máquinas puede ser un inconveniente para la valoración del cuerpo.',
+                    tutor: 'Las máquinas tienen movimientos guiados que restringen la visión global del entrenador.',
+                    explanation: 'La tecnologización limita la observación del sujeto al dejar de lado funciones que las máquinas no permiten evaluar.',
                     validation: (raw) => {
                         const v = normalizar(raw);
-                        const roots =['sangrad', 'indic', 'enfermedad', 'periodontal'];
+                        const roots = ['observacion', 'funciones'];
                         return roots.filter(r => v.includes(r)).length >= 2;
-                    },
-                    tutor: 'Sangrar no es normal.',
-                    explanation: 'El sangrado indica enfermedad periodontal.'
+                    }
                 },
                 {
                     type: 'blanks',
-                    badge: 'Soporte dental',
-                    title: 'Completar',
-                    instruction: 'El hueso sostiene el ______.',
-                    blanks:['diente'],
-                    tutor: 'Piensa en soporte.',
-                    explanation: 'El hueso forma parte del soporte dental.'
+                    anyOrder: false,
+                    badge: 'Errores técnicos en cardio',
+                    title: 'Postura en bicicleta y cinta',
+                    instruction: 'Completar la frase<br><br>En la bicicleta fija es vital mantener la ___ recta, mientras que en la cinta se debe evitar apoyar primero la ___.',
+                    blanks: ['espalda', 'punta del pie'],
+                    tutor: 'La salud articular en ejercicios cíclicos depende de la alineación y el tipo de apoyo.,',
+                    explanation: 'Mantener la espalda recta y apoyar correctamente el pie evita lesiones por tensiones o mala punta del pie.'
                 },
                 {
                     type: 'text',
-                    badge: 'Cirugía',
-                    title: 'Indicaciones',
-                    instruction: 'Un alumno dice que la cirugía se hace siempre.<br><br>Explica por qué está mal.',
+                    badge: 'Patologías del entrenamiento',
+                    title: 'Desgaste articular',
+                    instruction: 'Determinar la causa del desgaste articular relacionado con el entrenamiento de fuerza a largo plazo.',
+                    tutor: 'Considera el efecto de trabajar constantemente cerca del límite máximo de soporte.',
+                    explanation: 'Un estrés mecánico muy alto aplicado de manera repetida genera un desgaste importante en las articulaciones del atleta.',
                     validation: (raw) => {
                         const v = normalizar(raw);
-                        const roots =['cirugi', 'usa', 'necesari'];
+                        const roots = ['estres', 'mecanico', 'repetida'];
                         return roots.filter(r => v.includes(r)).length >= 2;
-                    },
-                    tutor: 'No siempre se opera.',
-                    explanation: 'La cirugía se usa cuando es necesario.'
+                    }
                 },
                 {
                     type: 'checklist',
-                    badge: 'Signos clínicos',
-                    title: 'Enfermedad',
-                    instruction: 'Marca signos reales.',
-                    items:[
-                        { text: 'Sangrado', correct: true },
-                        { text: 'Inflamación', correct: true },
-                        { text: 'Movilidad', correct: true },
-                        { text: 'Dolor de oído', correct: false }
+                    badge: 'Control postural',
+                    title: 'Fallos con mancuernas',
+                    instruction: 'Seleccionar las claves necesarias para evitar desarmar la técnica durante el uso de pesos libres.',
+                    items: [
+                        { text: 'Postura erguida', correct: true },
+                        { text: 'Movimientos rápidos', correct: false },
+                        { text: 'Énfasis en fijadores', correct: true },
+                        { text: 'Recorrido de agonistas', correct: true },
+                        { text: 'Ignorar sinergistas.', correct: false }
                     ].sort(() => Math.random() - 0.5),
-                    tutor: 'Son signos periodontales.',
-                    explanation: 'La enfermedad periodontal afecta tejidos de soporte.'
+                    tutor: 'La estabilidad depende de que ciertos músculos mantengan una posición fija.',
+                    explanation: 'Una postura erguida y el control de fijadores y agonistas son primordiales para no desarmar la técnica.'
                 },
                 {
                     type: 'text',
-                    badge: 'Ligamento',
-                    title: 'Función',
-                    instruction: 'Un alumno dice que el ligamento no sirve.<br><br>Explica el error.',
+                    badge: 'Problemas de flexibilidad',
+                    title: 'Flexibilidad y explosividad',
+                    instruction: 'Analizar cómo afecta un exceso de flexibilidad a las acciones de tipo explosivo.',
+                    tutor: 'El manual menciona que no siempre "más es mejor" cuando se busca velocidad.',
+                    explanation: 'Un exceso de flexibilidad puede ser contraproducente para realizar una acción de tipo explosivo y veloz.',
                     validation: (raw) => {
                         const v = normalizar(raw);
-                        const roots =['ligament', 'une', 'dient', 'hues'];
+                        const roots = ['contraproducente', 'veloz'];
                         return roots.filter(r => v.includes(r)).length >= 2;
-                    },
-                    tutor: 'Une estructuras.',
-                    explanation: 'El ligamento une el diente al hueso.'
+                    }
                 },
                 {
                     type: 'traffic',
-                    badge: 'Correcto o incorrecto',
-                    title: 'Periodoncia',
-                    instruction: 'Marca correcto',
-                    items:[
-                        { text: 'Encía protege', color: 'green' },
-                        { text: 'Ligamento une', color: 'green' },
-                        { text: 'No hay hueso', color: 'red' },
-                        { text: 'Hay soporte', color: 'green' }
+                    badge: 'Fatiga y técnica',
+                    title: 'Riesgos en saltos explosivos',
+                    instruction: 'Marca afirmaciones correctas',
+                    items: [
+                        { text: 'Al cansarse el cuerpo, la técnica se desarma y aumenta el riesgo de daño.', color: 'green' },
+                        { text: 'Los saltos deben realizarse sin observar la postura si se busca potencia.', color: 'red' },
+                        { text: 'La transferencia explosiva requiere analizar progresivamente la condición física.,', color: 'green' },
+                        { text: 'El estado físico no influye en si un salto es aeróbico o anaeróbico.', color: 'red' }
                     ].sort(() => Math.random() - 0.5),
-                    tutor: 'Piensa en tejidos.',
-                    explanation: 'El periodonto sostiene el diente.'
+                    tutor: 'El cansancio es el principal enemigo de la ejecución técnica segura.',
+                    explanation: 'Cuando el cuerpo se agota, la técnica se pierde, por lo que los saltos deben ser progresivos y controlados.'
                 },
                 {
                     type: 'text',
-                    badge: 'Bioseguridad',
-                    title: 'Importancia clínica',
-                    instruction: 'Explica por qué se usan medidas de higiene en cirugía.',
+                    badge: 'Psicología del movimiento',
+                    title: 'Fallos en la decisión',
+                    instruction: 'Identificar los tres pasos del proceso de toma de decisión que pueden fallar durante la ejecución.',
+                    tutor: 'Es un ciclo que comienza con lo que el cerebro capta y termina con el movimiento.',
+                    explanation: 'Errores en la percepción o en la ejecución final pueden arruinar la respuesta motriz óptima ante un estímulo.',
                     validation: (raw) => {
                         const v = normalizar(raw);
-                        const roots =['higien', 'evit', 'infecci', 'durant', 'cirugi'];
+                        const roots = ['percepcion', 'ejecucion'];
                         return roots.filter(r => v.includes(r)).length >= 2;
-                    },
-                    tutor: 'Evita contagios.',
-                    explanation: 'La higiene evita infecciones durante la cirugía.'
+                    }
                 }
             ],
-            escenarios:[
+            escenarios: [
                 {
                     type: 'text',
-                    badge: 'Periodoncia',
-                    title: 'Concepto incorrecto',
-                    instruction: 'Un alumno dice que la periodoncia solo estudia los dientes.<br><br>Explica por qué es incorrecto.',
+                    badge: 'Valoración profesional',
+                    title: 'Los tres pilares de la observación',
+                    instruction: 'Identificar los elementos esenciales que el entrenador debe recuperar para realizar una evaluación completa en cualquier entorno.',
+                    tutor: 'No te fijes solo en las pesas; mira quién entrena y dónde lo hace.',
+                    explanation: 'Valorar al sujeto y su contexto permite una intervención profesional ajustada a la realidad.',
                     validation: (raw) => {
                         const v = normalizar(raw);
-                        const roots =['periodonci', 'estudi', 'tejid', 'sostien', 'dient'];
+                        const roots = ['sujeto', 'contexto'];
                         return roots.filter(r => v.includes(r)).length >= 2;
-                    },
-                    tutor: 'No es solo el diente.',
-                    explanation: 'La periodoncia estudia los tejidos que sostienen el diente.'
+                    }
                 },
                 {
                     type: 'traffic',
-                    badge: 'Periodonto',
-                    title: 'Correcto o incorrecto',
-                    instruction: 'Marca correcto',
-                    items:[
-                        { text: 'La encía protege', color: 'green' },
-                        { text: 'El hueso sostiene', color: 'green' },
-                        { text: 'El músculo es periodonto', color: 'red' },
-                        { text: 'El ligamento une', color: 'green' }
+                    badge: 'Casos deportivos',
+                    title: 'Halterofilia en equipos',
+                    instruction: 'Señalar afirmaciones correctas sobre el uso de levantamientos olímpicos en deportes de conjunto.',
+                    items: [
+                        { text: 'Se utiliza para ganar fuerza y mejorar el rendimiento en deportes como el rugby o fútbol.', color: 'green' },
+                        { text: 'Solo se recomienda para movimientos de estética muscular lenta y controlada.', color: 'red' },
+                        { text: 'Favorece el equilibrio y la coordinación mediante gestos técnicos explosivos.', color: 'green' },
+                        { text: 'Carece de utilidad para estimular la potencia si se realiza con barra.', color: 'red' }
                     ].sort(() => Math.random() - 0.5),
-                    tutor: 'Piensa en soporte dental.',
-                    explanation: 'El periodonto incluye encía, hueso y ligamento.'
+                    tutor: 'Piensa en la transferencia hacia gestos deportivos reales de potencia.',
+                    explanation: 'La halterofilia potencia el rendimiento mediante la mejora de la coordinación y el equilibrio dinámico.'
                 },
                 {
                     type: 'text',
-                    badge: 'Enfermedad periodontal',
-                    title: 'Error frecuente',
-                    instruction: 'Un paciente dice que el sangrado al cepillarse es normal.<br><br>Explica por qué está equivocado.',
+                    badge: 'Poblaciones especiales',
+                    title: 'Decisión en tercera edad',
+                    instruction: 'Determinar si un entrenamiento de fuerza máxima con cargas del 90-100% es apto para un adulto mayor.',
+                    tutor: 'El manual advierte sobre un riesgo articular específico por el alto nivel de estrés mecánico.',
+                    explanation: 'El trabajo de carga máxima está desaconsejado en la tercera edad por su alta exigencia articular.',
                     validation: (raw) => {
                         const v = normalizar(raw);
-                        const roots =['sangrad', 'indic', 'inflamaci', 'periodontal'];
+                        const roots = ['desaconsejado', 'exigencia'];
                         return roots.filter(r => v.includes(r)).length >= 2;
-                    },
-                    tutor: 'Sangrar no es normal.',
-                    explanation: 'El sangrado indica inflamación periodontal.'
+                    }
                 },
                 {
                     type: 'checklist',
-                    badge: 'Signos periodontales',
-                    title: 'Identificación',
-                    instruction: 'Marca signos reales.',
-                    items:[
-                        { text: 'Sangrado', correct: true },
-                        { text: 'Inflamación', correct: true },
-                        { text: 'Movilidad', correct: true },
-                        { text: 'Color de piel', correct: false }
+                    badge: 'Selección de medios',
+                    title: 'Herramientas en exteriores',
+                    instruction: 'Seleccionar los elementos del manual que ofrecen mayor versatilidad para un escenario de entrenamiento al aire libre.',
+                    items: [
+                        { text: 'Bandas elásticas', correct: true },
+                        { text: 'Máquinas de rodamientos', correct: false },
+                        { text: 'Pesas rusas', correct: true },
+                        { text: 'Poleas fijas', correct: false },
+                        { text: 'Propio cuerpo', correct: true }
                     ].sort(() => Math.random() - 0.5),
-                    tutor: 'Son signos bucales.',
-                    explanation: 'La enfermedad periodontal produce sangrado e inflamación.'
+                    tutor: 'Busca herramientas que no dependan de una instalación fija o electricidad.',
+                    explanation: 'Las bandas y el propio cuerpo garantizan la versatilidad necesaria para entrenar en cualquier escenario.'
                 },
                 {
                     type: 'text',
-                    badge: 'Ligamento periodontal',
-                    title: 'Función',
-                    instruction: 'Un alumno dice que el ligamento no cumple función.<br><br>Explica el error.',
+                    badge: 'Conducta técnica',
+                    title: 'Postura en máquinas cíclicas',
+                    instruction: 'Describir la corrección necesaria ante un alumno que apoya primero la punta del pie al correr en cinta.',
+                    tutor: 'El orden del apoyo es la clave para evitar tensiones articulares innecesarias.',
+                    explanation: 'Apoyar primero el talón en la cinta es fundamental para prevenir lesiones y molestias futuras.',
                     validation: (raw) => {
                         const v = normalizar(raw);
-                        const roots =['ligament', 'une', 'dient', 'hues'];
+                        const roots = ['talon', 'lesiones'];
                         return roots.filter(r => v.includes(r)).length >= 2;
-                    },
-                    tutor: 'Une estructuras.',
-                    explanation: 'El ligamento une el diente con el hueso.'
+                    }
                 },
                 {
                     type: 'traffic',
-                    badge: 'Cirugía periodontal',
-                    title: 'Uso correcto',
-                    instruction: 'Marca correcto',
-                    items:[
-                        { text: 'Se usa para tratar', color: 'green' },
-                        { text: 'Se hace siempre', color: 'red' },
-                        { text: 'Se usa cuando hay daño', color: 'green' },
-                        { text: 'No sirve', color: 'red' }
+                    badge: 'Psicología aplicada',
+                    title: 'El ciclo de decisión',
+                    instruction: 'Distinguir afirmaciones correctas sobre la gestión del movimiento bajo presión según el proceso neurocognitivo.',
+                    items: [
+                        { text: 'La percepción de la respuesta precede siempre a la ejecución motriz final.', color: 'green' },
+                        { text: 'La decisión final no depende de cómo el sujeto percibe el estímulo externo.', color: 'red' },
+                        { text: 'El entrenamiento neurocognitivo refuerza funciones como la atención y la memoria.', color: 'green' },
+                        { text: 'Automatizar un movimiento impide que los sentidos participen en el aprendizaje.', color: 'red' }
                     ].sort(() => Math.random() - 0.5),
-                    tutor: 'Solo cuando es necesario.',
-                    explanation: 'La cirugía periodontal se realiza cuando hay lesión.'
+                    tutor: 'Revisa los tres pasos que conectan la mente con la acción.',
+                    explanation: 'Una buena percepción garantiza una ejecución motriz eficaz en situaciones de alta presión.'
                 },
                 {
                     type: 'text',
-                    badge: 'Bioseguridad',
-                    title: 'Error clínico',
-                    instruction: 'Un alumno trabaja sin guantes.<br><br>Explica por qué está mal.',
+                    badge: 'Escenarios de salud',
+                    title: 'Propósito del fitness funcional',
+                    instruction: 'Definir el objetivo principal de aplicar una progresión modificable en el fitness funcional.',
+                    tutor: 'Se trata de un concepto que busca la mejora integral del desempeño diario.',
+                    explanation: 'El fitness funcional busca elevar la salud y la calidad de vida mediante planes adaptables.',
                     validation: (raw) => {
                         const v = normalizar(raw);
-                        const roots =['bioseguridad', 'proteg', 'pacient', 'profesional'];
+                        const roots = ['calidad', 'vida', 'salud'];
                         return roots.filter(r => v.includes(r)).length >= 2;
-                    },
-                    tutor: 'Evita contagio.',
-                    explanation: 'La bioseguridad protege al paciente y al profesional.'
+                    }
                 },
                 {
                     type: 'checklist',
-                    badge: 'Medidas de higiene',
-                    title: 'Identificación',
-                    instruction: 'Marca medidas correctas.',
-                    items:[
-                        { text: 'Guantes', correct: true },
-                        { text: 'Barbijo', correct: true },
-                        { text: 'Lavado', correct: true },
-                        { text: 'No limpiar', correct: false }
+                    badge: 'Decisiones preventivas',
+                    title: 'Control del desgaste articular',
+                    instruction: 'Discriminar qué factores debe monitorear el entrenador para evitar daños por estrés mecánico.',
+                    items: [
+                        { text: 'Cargas repetidas al 90%', correct: true },
+                        { text: 'Buena postura', correct: true },
+                        { text: 'Descansos cortos', correct: false },
+                        { text: 'Técnica correcta', correct: true },
+                        { text: 'Velocidad constante', correct: false }
                     ].sort(() => Math.random() - 0.5),
-                    tutor: 'Son normas básicas.',
-                    explanation: 'La higiene evita infecciones.'
+                    tutor: 'El manual asocia el desgaste con el peso límite y la forma de ejecución.',
+                    explanation: 'Controlar las cargas y mantener una buena postura previene el desgaste articular prematuro.'
                 },
                 {
                     type: 'text',
-                    badge: 'Tratamiento periodontal',
-                    title: 'Importancia',
-                    instruction: 'Explica por qué se debe tratar la enfermedad periodontal.',
+                    badge: 'Planificación estratégica',
+                    title: 'Desrutinización del estímulo',
+                    instruction: 'Analizar por qué es necesario variar las planificaciones de fuerza de manera no convencional.',
+                    tutor: 'El estancamiento físico se evita modificando los estímulos de forma inteligente y constante.',
+                    explanation: 'La variabilidad permite alcanzar nuevos objetivos al evitar que el cuerpo se acostumbre a la rutina.',
                     validation: (raw) => {
                         const v = normalizar(raw);
-                        const roots =['enfermedad', 'destru', 'soport', 'dental'];
+                        const roots = ['objetivos', 'variabilidad'];
                         return roots.filter(r => v.includes(r)).length >= 2;
-                    },
-                    tutor: 'Evita daño.',
-                    explanation: 'La enfermedad puede destruir el soporte dental.'
+                    }
                 },
                 {
                     type: 'traffic',
-                    badge: 'Trabajo clínico',
-                    title: 'Correcto',
-                    instruction: 'Marca correcto',
-                    items:[
-                        { text: 'Usar guantes', color: 'green' },
-                        { text: 'No lavar manos', color: 'red' },
-                        { text: 'Desinfectar', color: 'green' },
-                        { text: 'No esterilizar', color: 'red' }
+                    badge: 'Casos de alta intensidad',
+                    title: 'Seguridad en saltos explosivos',
+                    instruction: 'Evaluar afirmaciones correctas para la implementación de tareas de salto en un circuito.',
+                    items: [
+                        { text: 'Los saltos deben realizarse de forma progresiva según la condición física del alumno.', color: 'green' },
+                        { text: 'Se debe ignorar la técnica si el alumno manifiesta fatiga extrema.', color: 'red' },
+                        { text: 'El cansancio corporal puede desarmar la técnica y causar daños físicos.', color: 'green' },
+                        { text: 'Todo salto es puramente aeróbico independientemente del manejo de la respiración.', color: 'red' }
                     ].sort(() => Math.random() - 0.5),
-                    tutor: 'Recuerda bioseguridad.',
-                    explanation: 'Las normas evitan infecciones.'
+                    tutor: 'Considera el impacto negativo del agotamiento en la precisión del movimiento.',
+                    explanation: 'Realizar saltos de forma progresiva protege la técnica cuando aparece la fatiga muscular.'
                 }
             ],
-            practica:[
+            practica: [
                 {
                     type: 'checklist',
-                    badge: 'Periodonto',
-                    title: 'Componentes',
-                    instruction: 'Marca partes del periodonto.',
-                    items:[
-                        { text: 'Encía', correct: true },
-                        { text: 'Ligamento', correct: true },
-                        { text: 'Hueso', correct: true },
-                        { text: 'Pelo', correct: false }
+                    badge: 'Levantamientos olímpicos',
+                    title: 'Pasos del Snatch',
+                    instruction: 'Identificar las características técnicas del movimiento de "arranque" según el manual.',
+                    items: [
+                        { text: 'Desde el suelo hasta arriba de la cabeza', correct: true },
+                        { text: 'Brazos extendidos', correct: true },
+                        { text: 'Realizado en dos tiempos', correct: false },
+                        { text: 'Movimiento en un solo tiempo', correct: true },
+                        { text: 'Barra a la nuca', correct: false }
                     ].sort(() => Math.random() - 0.5),
-                    tutor: 'Son tejidos de soporte.',
-                    explanation: 'El periodonto sostiene el diente.'
+                    tutor: 'Es la modalidad más directa que busca llevar la carga sin detenerse en los hombros.',
+                    explanation: 'El Snatch requiere mover la barra desde el suelo hasta encima de la cabeza en un solo tiempo.'
                 },
                 {
                     type: 'text',
-                    badge: 'Encía',
-                    title: 'Función',
-                    instruction: 'Explica la función de la encía.',
+                    badge: 'Métodos de intensificación',
+                    title: 'Ejecución de superseries',
+                    instruction: 'Definir la cantidad de ejercicios continuos y el tiempo de pausa máximo permitido.',
+                    tutor: 'Este método busca la fatiga controlada mediante una transición rápida entre estaciones.',
+                    explanation: 'Las superseries consisten en realizar dos ejercicios seguidos con una pausa mínima de 30 segundos.',
                     validation: (raw) => {
                         const v = normalizar(raw);
-                        const roots =['enci', 'proteg', 'tejid', 'dentari'];
+                        const roots = ['ejercicios', 'seguidos', 'pausa'];
                         return roots.filter(r => v.includes(r)).length >= 2;
-                    },
-                    tutor: 'Protege el diente.',
-                    explanation: 'La encía protege los tejidos dentarios.'
+                    }
                 },
                 {
                     type: 'blanks',
-                    badge: 'Ligamento',
-                    title: 'Completar',
-                    instruction: 'El ligamento une el ______ con el ______.',
-                    blanks:['diente', 'hueso'],
-                    tutor: 'Une dos partes.',
-                    explanation: 'El ligamento une el diente al hueso.'
+                    anyOrder: false,
+                    badge: 'Ergometría técnica',
+                    title: 'Procedimiento en cinta',
+                    instruction: 'Completar la frase<br><br>Al correr en cinta el empuje es hacia atrás, requiriendo apoyar primero el ___ y luego la ___.',
+                    blanks: ['talon', 'punta del pie'],
+                    tutor: 'El orden del contacto con la superficie es inverso al empuje habitual de carrera en suelo.',
+                    explanation: 'El apoyo correcto en la cinta inicia con el talón y termina en la punta del pie para evitar lesiones.'
                 },
                 {
                     type: 'traffic',
-                    badge: 'Enfermedad periodontal',
-                    title: 'Correcto',
-                    instruction: 'Marca correcto',
-                    items:[
-                        { text: 'Inflamación', color: 'green' },
-                        { text: 'Sangrado', color: 'green' },
-                        { text: 'No hay daño', color: 'red' },
-                        { text: 'Movilidad', color: 'green' }
+                    badge: 'Técnica en cardio',
+                    title: 'Ajustes de seguridad',
+                    instruction: 'Evaluar afirmaciones sobre el uso correcto de máquinas cíclicas.',
+                    items: [
+                        { text: 'En la bicicleta fija es fundamental mantener la espalda recta.', color: 'green' },
+                        { text: 'En el elíptico toda la fuerza debe recaer exclusivamente en el gemelo.', color: 'red' },
+                        { text: 'El asiento de la bici debe ajustarse según la altura de la persona.', color: 'green' },
+                        { text: 'Los apoyos frontales en la bicicleta son opcionales y pueden ignorarse.', color: 'red' }
                     ].sort(() => Math.random() - 0.5),
-                    tutor: 'Son signos reales.',
-                    explanation: 'La enfermedad afecta tejidos de soporte.'
+                    tutor: 'La alineación corporal previene tensiones innecesarias en movimientos repetitivos.',
+                    explanation: 'Ajustar el asiento y mantener la espalda recta garantiza una técnica segura en la bicicleta fija.'
                 },
                 {
                     type: 'text',
-                    badge: 'Cirugía',
-                    title: 'Objetivo',
-                    instruction: 'Explica para qué sirve la cirugía periodontal.',
+                    badge: 'Protocolo de fuerza',
+                    title: 'Ejecución de una repetición',
+                    instruction: 'Detallar el recorrido completo que define una repetición técnica en press banca.',
+                    tutor: 'El ciclo comienza desde los soportes y debe regresar al punto de extensión máxima.',
+                    explanation: 'Una repetición inicia sacando la barra, bajándola al pecho y volviendo a la posición horizontal.',
                     validation: (raw) => {
                         const v = normalizar(raw);
-                        const roots =['cirugi', 'corrig', 'dañ', 'periodont'];
+                        const roots = ['barra', 'pecho'];
                         return roots.filter(r => v.includes(r)).length >= 2;
-                    },
-                    tutor: 'Se usa para reparar.',
-                    explanation: 'La cirugía corrige daños en el periodonto.'
+                    }
                 },
                 {
                     type: 'checklist',
-                    badge: 'Instrumental',
-                    title: 'Uso correcto',
-                    instruction: 'Marca lo correcto.',
-                    items:[
-                        { text: 'Esterilizar', correct: true },
-                        { text: 'Desinfectar', correct: true },
-                        { text: 'Usar sucio', correct: false },
-                        { text: 'Limpiar', correct: true }
+                    badge: 'Organización de la sesión',
+                    title: 'Estructura de circuitos',
+                    instruction: 'Seleccionar los componentes necesarios para armar un circuito funcional eficaz.',
+                    items: [
+                        { text: 'Varias estaciones', correct: true },
+                        { text: 'Periodos cortos de tiempo', correct: true },
+                        { text: 'Pausas de 10 minutos', correct: false },
+                        { text: 'Grupos heterogéneos', correct: true },
+                        { text: 'Cargas máximas de 1RM.', correct: false }
                     ].sort(() => Math.random() - 0.5),
-                    tutor: 'Debe estar limpio.',
-                    explanation: 'El instrumental debe estar esterilizado.'
+                    tutor: 'Busca la variabilidad de ejercicios y la rotación constante de los participantes.',
+                    explanation: 'Los circuitos se organizan por estaciones con periodos de tiempo cortos para mantener la intensidad.'
                 },
                 {
                     type: 'text',
-                    badge: 'Higiene',
-                    title: 'Importancia',
-                    instruction: 'Explica por qué es importante la higiene en cirugía.',
+                    badge: 'Derivados de halterofilia',
+                    title: 'Técnica del Good Morning',
+                    instruction: 'Describir la posición de la barra y el movimiento del cuerpo en este ejercicio.',
+                    tutor: 'La carga se sitúa detrás del cuello y el enfoque está en la cadena posterior.',
+                    explanation: 'El ejercicio Good Morning baja el tronco hacia adelante para fortalecer los músculos erectorales.',
                     validation: (raw) => {
                         const v = normalizar(raw);
-                        const roots =['higien', 'evit', 'infecci'];
+                        const roots = ['tronco', 'erectorales'];
                         return roots.filter(r => v.includes(r)).length >= 2;
-                    },
-                    tutor: 'Evita contagio.',
-                    explanation: 'La higiene evita infecciones.'
+                    }
                 },
                 {
                     type: 'traffic',
-                    badge: 'Campo clínico',
-                    title: 'Correcto',
-                    instruction: 'Marca correcto',
-                    items:[
-                        { text: 'Campo limpio', color: 'green' },
-                        { text: 'Campo sucio', color: 'red' },
-                        { text: 'Protección', color: 'green' },
-                        { text: 'Sin guantes', color: 'red' }
+                    badge: 'Planificación muscular',
+                    title: 'Combinación de sinergistas',
+                    instruction: 'Marcar afirmaciones sobre la distribución muscular recomendada.',
+                    items: [
+                        { text: 'Trabajar un músculo grande con su sinergista es la planificación más común.', color: 'green' },
+                        { text: 'Los músculos antagonistas deben trabajarse siempre en triseries de cuatro ejercicios.', color: 'red' },
+                        { text: 'El trabajo del CORE debe estar presente en todos los entrenamientos.', color: 'green' },
+                        { text: 'El entrenamiento "Full body" solo se enfoca en músculos pequeños de las extremidades.', color: 'red' }
                     ].sort(() => Math.random() - 0.5),
-                    tutor: 'Recuerda bioseguridad.',
-                    explanation: 'El campo debe estar limpio.'
+                    tutor: 'La continuidad de la cadena muscular es clave para el rendimiento individual.',
+                    explanation: 'Trabajar un músculo grande con su sinergista es la forma más común de planificación muscular.'
                 },
                 {
                     type: 'text',
-                    badge: 'Prevención',
-                    title: 'Periodontal',
-                    instruction: 'Explica por qué es importante prevenir la enfermedad periodontal.',
+                    badge: 'Uso de materiales',
+                    title: 'Técnica con bandas elásticas',
+                    instruction: 'Puntualizar cómo se logra estimular distintos grupos musculares usando este medio.',
+                    tutor: 'No necesitas cambiar de banda, sino cambiar tu orientación respecto a ella.',
+                    explanation: 'Modificar los planos y ejes permite entrenar diversos grupos musculares de forma segura con bandas.',
                     validation: (raw) => {
                         const v = normalizar(raw);
-                        const roots =['prevenci', 'evit', 'perdid', 'dental'];
+                        const roots = ['planos', 'ejes'];
                         return roots.filter(r => v.includes(r)).length >= 2;
-                    },
-                    tutor: 'Evita daño.',
-                    explanation: 'La prevención evita pérdida dental.'
+                    }
                 },
                 {
                     type: 'checklist',
-                    badge: 'Normas clínicas',
-                    title: 'Identificación',
-                    instruction: 'Marca normas correctas.',
-                    items:[
-                        { text: 'Guantes', correct: true },
-                        { text: 'Barbijo', correct: true },
-                        { text: 'Lavado', correct: true },
-                        { text: 'No limpiar', correct: false }
+                    badge: 'Cognición motriz',
+                    title: 'Protocolo de decisión',
+                    instruction: 'Reconocer los tres pasos que conforman la respuesta rápida ante un estímulo.',
+                    items: [
+                        { text: 'Percepción', correct: true },
+                        { text: 'Motivación', correct: false },
+                        { text: 'Decisión', correct: true },
+                        { text: 'Ejecución', correct: true },
+                        { text: 'Intuición', correct: false }
                     ].sort(() => Math.random() - 0.5),
-                    tutor: 'Son medidas básicas.',
-                    explanation: 'Las normas protegen al paciente y al profesional.'
+                    tutor: 'Es un ciclo secuencial que va desde captar el entorno hasta la acción final.',
+                    explanation: 'El protocolo de decisión incluye la percepción del estímulo y la posterior ejecución motriz.'
                 }
             ]
         };
@@ -1164,11 +1196,26 @@
             } else if (data.type === 'blanks') {
                 const inputs = document.querySelectorAll('.fill-input');
                 let hits = 0;
+                let usedAnswers = [];
                 inputs.forEach(inp => {
                     const v = normalizar(inp.value.trim());
-                    const ans = normalizar(inp.dataset.ans.trim());
-                    if (v.length > 0 && (ans === v || (v.length > 1 && ans.startsWith(v.slice(0, Math.max(2, Math.min(v.length, ans.length))))))) {
-                        hits++;
+                    if (v.length > 0) {
+                        if (data.anyOrder) {
+                            const matchedIdx = data.blanks.findIndex((ans, idx) => {
+                                if (usedAnswers.includes(idx)) return false;
+                                const normAns = normalizar(ans.trim());
+                                return (normAns === v || (v.length > 1 && normAns.startsWith(v.slice(0, Math.max(2, Math.min(v.length, normAns.length))))));
+                            });
+                            if (matchedIdx !== -1) {
+                                hits++;
+                                usedAnswers.push(matchedIdx);
+                            }
+                        } else {
+                            const ans = normalizar(inp.dataset.ans.trim());
+                            if (ans === v || (v.length > 1 && ans.startsWith(v.slice(0, Math.max(2, Math.min(v.length, ans.length)))))) {
+                                hits++;
+                            }
+                        }
                     }
                 });
                 isCorrect = (hits === data.blanks.length);
